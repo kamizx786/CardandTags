@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import app from "../Firebase";
-import { getDatabase, ref, get, set, update } from "firebase/database";
-import { useNavigate, useParams } from "react-router-dom";
-import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
+import { get, getDatabase, ref, update } from "firebase/database";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import app from "../Firebase";
 const Card = () => {
   const { id } = useParams();
   const db = getDatabase(app);
@@ -46,20 +45,19 @@ const Card = () => {
   };
 
   useEffect(() => {
-      fetchData();
-    }, [id]);
+    fetchData();
+  }, [id]);
 
   return (
     <div
       style={{
-        height:"100vh",
+        height: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <Spin tip="Loading" style={{fontSize:"20px"}}/>
-      
+      <Spin tip="Loading" style={{ fontSize: "20px" }} />
     </div>
   );
 };
